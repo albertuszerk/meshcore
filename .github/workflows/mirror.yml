@@ -16,8 +16,8 @@ jobs:
 
       - name: Push to GitLab
         run: |
-          git push https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/albertuszerk/meshcore.git main
+          git push --force https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/albertuszerk/meshcore.git main
 
       - name: Push to Codeberg
         run: |
-          git push https://albertuszerk:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/albertuszerk/meshcore.git main
+          git push --force https://albertuszerk:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/albertuszerk/meshcore.git main
