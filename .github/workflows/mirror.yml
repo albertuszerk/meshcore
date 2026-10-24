@@ -1,0 +1,23 @@
+name: Mirror to GitLab and Codeberg
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to GitLab
+        run: |
+          git push --prune --force https://albertuszerk:${{ secrets.GITLAB_TOKEN }}@gitlab.com/albertuszerk/meshcore.git main
+
+      - name: Push to Codeberg
+        run: |
+          git push --prune --force https://albertuszerk:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/albertuszerk/meshcore.git main
